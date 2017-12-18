@@ -75,7 +75,7 @@ public class PortfoliosPage extends Page {
       
      public Portfolios addNewPortfolio(WebDriver driver){
          Portfolios p = new Portfolios();
-         p.setId(getIdFromLastRow(driver, "data-portfolio-id"));
+        
         // chooseAllPortfolios(driver);
          clickOnAddPortfolio(driver);
          p.setTitle(sendFirstName(driver));
@@ -87,6 +87,7 @@ public class PortfoliosPage extends Page {
          p.setDescription(sendDescription(driver));
          choosePhoto(driver);
          clickOnSave(driver);
+          p.setId(getIdFromLastRow(driver, "data-portfolio-id"));
          return p;
      }
      
@@ -127,6 +128,8 @@ public class PortfoliosPage extends Page {
      
      public Portfolios categories(WebDriver driver){
          Portfolios p = new Portfolios();
+         p.setId(getIdFromLastRow(driver, "data-portfolio-id"));
+         
          return p;
      }
 }

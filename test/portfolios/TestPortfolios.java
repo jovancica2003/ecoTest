@@ -37,7 +37,7 @@ public class TestPortfolios {
         driver.manage().window().maximize();
         loginPage = new LoginPage();
         homePage = loginPage.logIn(driver, "http://ecotest.school.cubes.rs/admin_session/login", "admin", "cubesqa");
-        //  DbConnection.getConnection();
+        DbConnection.getConnection();
     }
 
     @AfterClass
@@ -60,13 +60,13 @@ public class TestPortfolios {
     @Test
     public void testCreateNewPortfolio() {
         Portfolios portfolioWeb = portfoliosPage.addNewPortfolio(driver);
-//        Portfolios portfolioDb = DbConnection.getPortfolio("SELECT * FROM `cms_portfolios` WHERE id=" + portfolioWeb.getId());
-        Portfolios portfolioDb = DbConnection.getPortfolio("SELECT * FROM `cms_portfolios` WHERE id=" +34);
-    //    Assert.assertEquals(portfolioWeb.getId(), portfolioDb.getId());
-       Assert.assertEquals(portfolioWeb.getTitle(), portfolioDb.getTitle());
+        Portfolios portfolioDb = DbConnection.getPortfolio("SELECT * FROM `cms_portfolios` WHERE id=" + portfolioWeb.getId());
+//        Portfolios portfolioDb = DbConnection.getPortfolio("SELECT * FROM `cms_portfolios` WHERE id=" +34);
+       Assert.assertEquals(portfolioWeb.getId(), portfolioDb.getId());
+      Assert.assertEquals(portfolioWeb.getTitle(), portfolioDb.getTitle());
 //        Assert.assertEquals(portfolioWeb.getDataCategories(), portfolioDb.getDataCategories());
-//        Assert.assertEquals(portfolioWeb.getCharacteristic1(), portfolioDb.getCharacteristic2());
-//        Assert.assertEquals(portfolioWeb.getDescription(), portfolioDb.getDescription());
+       Assert.assertEquals(portfolioWeb.getCharacteristic1(), portfolioDb.getCharacteristic1());
+        Assert.assertEquals(portfolioWeb.getDescription(), portfolioDb.getDescription());
 
     }
 
