@@ -31,8 +31,8 @@ public class PhotoPage extends Page {
     }
 
     private String choosePhoto(WebDriver driver) {
-        //return sendTextOnField(driver, By.id("photo_gallery_leading_photo"), "/Users/qa/Desktop/1.jpg");
-        return sendTextOnField(driver, By.id("photo_gallery_leading_photo"),"C:\\Users\\Jovanka\\Desktop\\bug2.jpg");
+        return sendTextOnField(driver, By.id("photo_gallery_leading_photo"), "/Users/qa/Desktop/1.jpg");
+        //return sendTextOnField(driver, By.id("photo_gallery_leading_photo"),"C:\\Users\\Jovanka\\Desktop\\bug2.jpg");
     }
 
     private void clickOnSave(WebDriver driver) {

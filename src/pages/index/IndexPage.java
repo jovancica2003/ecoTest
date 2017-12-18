@@ -62,8 +62,8 @@ public class IndexPage extends Page {
     }
 
     private String choosePhoto(WebDriver driver) {
-       // return sendTextOnField(driver, By.id("index_slide_photo"), "/Users/qa/Desktop/1.jpg");
-        return sendTextOnField(driver, By.id("index_slide_photo"),"C:\\Users\\Jovanka\\Desktop\\bug2.jpg");
+       return sendTextOnField(driver, By.id("index_slide_photo"), "/Users/qa/Desktop/1.jpg");
+        //return sendTextOnField(driver, By.id("index_slide_photo"),"C:\\Users\\Jovanka\\Desktop\\bug2.jpg");
     }
 
     private void clickOnSave(WebDriver driver) {

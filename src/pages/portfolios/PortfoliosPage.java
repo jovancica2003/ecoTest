@@ -33,7 +33,7 @@ public class PortfoliosPage extends Page {
     }
     
     private void clickOnDataCategories(WebDriver driver){
-       // clickOnElement(driver, By.className("multiselect dropdown-toggle btn"));
+        //clickOnElement(driver, By.className("multiselect dropdown-toggle btn"));
         clickOnElement(driver, By.xpath("//*[@id='page-wrapper']/div/div[3]/div/div/div[2]/form/fieldset/div[2]/div[1]/span/div/button"));
     }
     
@@ -58,8 +58,8 @@ public class PortfoliosPage extends Page {
     }
     
     private String choosePhoto(WebDriver driver){
-        return sendTextOnField(driver, By.id("portfolio_photo"), "C:\\Users\\Jovanka\\Desktop\\bug2.jpg");
-        // return sendTextOnField(driver, By.id("index_slide_photo"), "/Users/qa/Desktop/1.jpg");
+        //return sendTextOnField(driver, By.id("portfolio_photo"), "C:\\Users\\Jovanka\\Desktop\\bug2.jpg");
+         return sendTextOnField(driver, By.id("portfolio_photo"), "/Users/qa/Desktop/1.jpg");
     }
      private void clickOnSave(WebDriver driver) {
         clickOnElement(driver, By.id("new_portfolio_submit"));
@@ -109,6 +109,24 @@ public class PortfoliosPage extends Page {
          chooseOptionFromLastRow(driver, By.className("glyphicon-trash"));
          clickOnElement(driver, By.className("btn-danger"));
          
+         return p;
+     }
+     private void clickOnPortfolioCategories (WebDriver driver){
+         clickOnElement(driver, By.linkText("Categories"));
+     }
+     private void clickOnAddPortfolio2(WebDriver driver){
+         clickOnElement(driver, By.className("btn-default"));
+     }
+     
+     private String sendName(WebDriver driver){
+         return sendTextOnField(driver, By.id("name"));
+     }
+     private void clickOnSave2(WebDriver driver) {
+        clickOnElement(driver, By.id("new_category_submit"));
+    }
+     
+     public Portfolios categories(WebDriver driver){
+         Portfolios p = new Portfolios();
          return p;
      }
 }
