@@ -61,11 +61,10 @@ public class TestPortfolios {
     public void testCreateNewPortfolio() {
         Portfolios portfolioWeb = portfoliosPage.addNewPortfolio(driver);
         Portfolios portfolioDb = DbConnection.getPortfolio("SELECT * FROM `cms_portfolios` WHERE id=" + portfolioWeb.getId());
-//        Portfolios portfolioDb = DbConnection.getPortfolio("SELECT * FROM `cms_portfolios` WHERE id=" +34);
-       Assert.assertEquals(portfolioWeb.getId(), portfolioDb.getId());
-      Assert.assertEquals(portfolioWeb.getTitle(), portfolioDb.getTitle());
-//        Assert.assertEquals(portfolioWeb.getDataCategories(), portfolioDb.getDataCategories());
-       Assert.assertEquals(portfolioWeb.getCharacteristic1(), portfolioDb.getCharacteristic1());
+        Assert.assertEquals(portfolioWeb.getId(), portfolioDb.getId());
+        Assert.assertEquals(portfolioWeb.getTitle(), portfolioDb.getTitle());
+        Assert.assertEquals(portfolioWeb.getDataCategories(), portfolioDb.getDataCategories());
+        Assert.assertEquals(portfolioWeb.getCharacteristic1(), portfolioDb.getCharacteristic1());
         Assert.assertEquals(portfolioWeb.getDescription(), portfolioDb.getDescription());
 
     }
@@ -73,18 +72,28 @@ public class TestPortfolios {
     @Test
     public void testEditPortfolio() {
         Portfolios portfolioWeb = portfoliosPage.editPortfolio(driver);
-//        Portfolios portfolioDb = DbConnection.getPortfolio("SELECT * FROM `cms_portfolios` WHERE id=" + portfolioWeb.getId());
-//        Assert.assertEquals(portfolioWeb.getId(), portfolioDb.getId());
-//        Assert.assertEquals(portfolioWeb.getTitle(), portfolioDb.getTitle());
-//        Assert.assertEquals(portfolioWeb.getDataCategories(), portfolioDb.getDataCategories());
-//        Assert.assertEquals(portfolioWeb.getCharacteristic1(), portfolioDb.getCharacteristic2());
-//        Assert.assertEquals(portfolioWeb.getDescription(), portfolioDb.getDescription());
+        Portfolios portfolioDb = DbConnection.getPortfolio("SELECT * FROM `cms_portfolios` WHERE id=" + portfolioWeb.getId());
+       Assert.assertEquals(portfolioWeb.getId(), portfolioDb.getId());
+        Assert.assertEquals(portfolioWeb.getTitle(), portfolioDb.getTitle());
+        Assert.assertEquals(portfolioWeb.getDataCategories(), portfolioDb.getDataCategories());
+        Assert.assertEquals(portfolioWeb.getCharacteristic1(), portfolioDb.getCharacteristic2());
+       Assert.assertEquals(portfolioWeb.getDescription(), portfolioDb.getDescription());
     }
 
     @Test
-    public void deetePortfolio() {
+    public void deletePortfolio() {
         Portfolios portfolioWeb = portfoliosPage.deletePortfolio(driver);
         Boolean isDeleted = DbConnection.isDeleted("SELECT * FROM `cms_portfolios` WHERE id=" + portfolioWeb.getId());
         Assert.assertEquals(Boolean.TRUE, isDeleted);
+    }
+
+    @Test
+    public void testPortfoliosCategories() {
+        Portfolios portfolioWeb = portfoliosPage.categories(driver);
+        Portfolios portfolioDb = DbConnection.getPortfoliosCategories("SELECT * FROM `cms_portfolios_categories` WHERE id=" + portfolioWeb.getId());
+        Assert.assertEquals(portfolioWeb.getId(), portfolioDb.getId());
+        Assert.assertEquals(portfolioWeb.getTitle(), portfolioDb.getTitle());
+        Assert.assertEquals(portfolioWeb.getDescription(), portfolioDb.getDescription());
+        
     }
 }

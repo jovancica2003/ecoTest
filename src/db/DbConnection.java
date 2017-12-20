@@ -21,12 +21,13 @@ import java.util.logging.Logger;
  * @author qa
  */
 public class DbConnection {
+
     private static Connection conn;
-    
-    public static void getConnection(){
+
+    public static void getConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            
+
             conn = DriverManager.getConnection("jdbc:mysql://136.243.5.37:33063/eco_test", "root", "cubesqa");
         } catch (SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
@@ -38,6 +39,7 @@ public class DbConnection {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public static void close() {
         try {
             conn.close();
@@ -45,59 +47,58 @@ public class DbConnection {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-     public static Index getIndex(String query){
-            Index i = new Index();
+
+    public static Index getIndex(String query) {
+        Index i = new Index();
         try {
-            
+
             Statement st = conn.createStatement();
-            ResultSet rs =  st.executeQuery(query);
-            
+            ResultSet rs = st.executeQuery(query);
+
             System.out.println(query);
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 i.setId(rs.getInt(1));
                 i.setTitle(rs.getString(2));
                 i.setDescription(rs.getString(3));
                 i.setLinkType(rs.getString(4));
                 i.setLinkLabel(rs.getString(5));
                 i.setDeleted(false);
-                } else {
+            } else {
                 i.setDeleted(true);
-            
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return i;
-        }
-     public static Photo getPhoto(String query){
-            Photo p = new Photo();
+    }
+
+    public static Photo getPhoto(String query) {
+        Photo p = new Photo();
         try {
-            
+
             Statement st = conn.createStatement();
-            ResultSet rs =  st.executeQuery(query);
-            
+            ResultSet rs = st.executeQuery(query);
+
             System.out.println(query);
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 p.setId(rs.getInt(1));
                 p.setTitle(rs.getString(2));
                 p.setDescription(rs.getString(3));
                 p.setDeleted(false);
-                } else {
+            } else {
                 p.setDeleted(true);
-            
-            
-                
-               
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
-        }
-     public static Boolean isDeleted(String query) {
+    }
+
+    public static Boolean isDeleted(String query) {
 
         try {
 
@@ -116,30 +117,55 @@ public class DbConnection {
         }
         return null;
     }
-     
-     public static Portfolios getPortfolio(String query){
-            Portfolios p = new Portfolios();
+
+    public static Portfolios getPortfolio(String query) {
+        Portfolios p = new Portfolios();
         try {
-            
+
             Statement st = conn.createStatement();
-            ResultSet rs =  st.executeQuery(query);
-            
+            ResultSet rs = st.executeQuery(query);
+
             System.out.println(query);
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 p.setId(rs.getInt(1));
                 p.setTitle(rs.getString(2));
+                p.setDataCategories(rs.getString(3));
                 p.setCharacteristic1(rs.getString(4));
                 p.setCharacteristic2(rs.getString(5));
                 p.setDescription(rs.getString(6));
                 p.setDeleted(false);
-                } else {
+            } else {
                 p.setDeleted(true);
-            
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
+    }
+
+    public static Portfolios getPortfoliosCategories(String query) {
+        Portfolios p = new Portfolios();
+        try {
+
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            System.out.println(query);
+
+            if (rs.next()) {
+                p.setId(rs.getInt(1));
+                p.setTitle(rs.getString(2));
+                p.setDescription(rs.getString(3));
+                p.setDeleted(false);
+            } else {
+                p.setDeleted(true);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return p;
+    }
 }

@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import pages.index.IndexPage;
 import pages.photo.PhotoPage;
 import pages.portfolios.PortfoliosPage;
+import pages.users.UsersPage;
 
 /**
  *
@@ -30,8 +31,8 @@ public class HomePage extends Page {
         PhotoPage pp = new PhotoPage();
         return pp;
     }
-    
-    public PortfoliosPage clickOnAllPortfolios(WebDriver driver){
+
+    public PortfoliosPage clickOnAllPortfolios(WebDriver driver) {
         //clickOnElement(driver, By.className("active"));
         //clickOnElement(driver, By.xpath("//*[@id='side-menu']/li[7]/ul/li[1]/a"));
         clickOnElement(driver, By.linkText("All Portfolios"));
@@ -39,4 +40,9 @@ public class HomePage extends Page {
         return pfp;
     }
 
+    public UsersPage clickOnAllUsers(WebDriver driver) {
+        clickOnElement(driver, By.linkText("All Users"));
+        UsersPage up = new UsersPage();
+        return up;
+    }
 }

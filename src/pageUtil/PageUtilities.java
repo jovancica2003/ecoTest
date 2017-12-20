@@ -34,4 +34,8 @@ public class PageUtilities {
 //            return "http://" +(getRandomText())+(".te");
     }
 
+    public static String getRandomEmail() {
+        return getRandomText().concat("@").concat(getRandomText());
+    }
+
 }
