@@ -44,6 +44,12 @@ public class UsersPage extends Page {
     public Users createNewUser(WebDriver driver){
         Users u = new Users();
         clickOnAddUser(driver);
+        u.setUsername(sendUsername(driver));
+        u.setFirstName(sendFirstName(driver));
+        u.setLastName(sendLastName(driver));
+        u.setEmail(sendEmail(driver));
+        clickOnSave(driver);
+       // u.setId(getIdFromLastRow(driver, "data-user-id"));
         
         return u;
         

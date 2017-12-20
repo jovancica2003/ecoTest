@@ -42,8 +42,8 @@ public class TestPortfolios {
 
     @AfterClass
     public static void tearDownClass() {
-        driver.quit();
-        // DbConnection.close();
+//        driver.quit();
+//         DbConnection.close();
     }
 
     @Before

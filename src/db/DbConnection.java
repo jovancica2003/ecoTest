@@ -8,6 +8,7 @@ package db;
 import domen.Index;
 import domen.Photo;
 import domen.Portfolios;
+import domen.Users;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -167,5 +168,31 @@ public class DbConnection {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
+    }
+    
+    public static Users getUser(String query) {
+        Users u = new Users();
+        try {
+
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            System.out.println(query);
+
+            if (rs.next()) {
+                u.setId(rs.getInt(1));
+                u.setUsername(rs.getString(2));
+                u.setEmail(rs.getString(5));
+                u.setFirstName(rs.getString(6));
+                u.setLastName(rs.getString(7));
+                u.setDeleted(false);
+            } else {
+                u.setDeleted(true);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return u;
     }
 }

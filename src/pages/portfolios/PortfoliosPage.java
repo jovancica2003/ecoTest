@@ -10,6 +10,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import pages.basics.Page;
 
@@ -31,13 +32,13 @@ public class PortfoliosPage extends Page {
     }
 
     private void clickOnDataCategories(WebDriver driver) {
-        //clickOnElement(driver, By.className("multiselect dropdown-toggle btn"));
+        //clickOnElement(driver, By.className("multiselect text"));
         clickOnElement(driver, By.xpath("//*[@id='page-wrapper']/div/div[3]/div/div/div[2]/form/fieldset/div[2]/div[1]/span/div/button"));
     }
 
-    private void clickOnSelected(WebDriver driver) {
-        clickOnElement(driver, By.linkText("Voće"));
-    }
+//    private void clickOnSelected(WebDriver driver) {
+//        clickOnElement(driver, By.linkText("Voće"));
+//    }
 //    private String chooseDataCategories(WebDriver driver){
 //        WebElement dataCategories = driver.findElement(By.id("data_categories"));
 //       
@@ -46,6 +47,22 @@ public class PortfoliosPage extends Page {
 //        return chooseDataCategories.getFirstSelectedOption().getAttribute("value");
 //        
 //    }
+    
+    
+    private void chooseDataCategories(WebDriver driver){
+        //clickOnElement(driver, By.className("multiselect text"));
+        
+        clickOnElement(driver, By.xpath("//*[@id='page-wrapper']/div/div[3]/div/div/div[2]/form/fieldset/div[2]/div[1]/span/div/button"));
+        WebElement multiSelect = waitForElementClickability(driver, By.className("multiselect-item"));
+        
+        List<WebElement> checkboxes = multiSelect.findElements(By.tagName("li"));
+        
+        checkboxes.get(3).click();
+//        for(int i=0; i<checkboxes.size(); i++){
+//            WebElement get =checkboxes.get(3);
+//            get.click();
+//        }
+    }
 
     private String sendCharacteristic1(WebDriver driver) {
         return sendTextOnField(driver, By.id("characteristic1"));
@@ -84,8 +101,9 @@ public class PortfoliosPage extends Page {
         // chooseAllPortfolios(driver);
         clickOnAddPortfolio(driver);
         p.setTitle(sendFirstName(driver));
-        clickOnDataCategories(driver);
-        clickOnSelected(driver);
+//        clickOnDataCategories(driver);
+//        clickOnSelected(driver);
+        chooseDataCategories(driver);
         //  p.setDataCategories(chooseDataCategories(driver));
         p.setCharacteristic1(sendCharacteristic1(driver));
         p.setCharacteristic2(sendCharacteristic2(driver));
@@ -104,7 +122,7 @@ public class PortfoliosPage extends Page {
         clickOnDataCategories(driver);
         //selectAllCategories(driver);
         selectAllCategories(driver);
-        clickOnSelected(driver);
+       // clickOnSelected(driver);
         p.setCharacteristic1(sendCharacteristic1(driver));
         p.setCharacteristic2(sendCharacteristic2(driver));
         p.setDescription(sendDescription(driver));
