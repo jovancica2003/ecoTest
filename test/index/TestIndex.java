@@ -67,7 +67,7 @@ public class TestIndex {
         Index indexDb = DbConnection.getIndex("SELECT * FROM `cms_index_slides` WHERE id =" + indexWeb.getId());
         Assert.assertEquals(indexWeb.getId(), indexDb.getId());
         Assert.assertEquals(indexWeb.getTitle(), indexDb.getTitle());
-//         Assert.assertEquals(indexWeb.getDescription(), indexDb.getDescription());
+        Assert.assertEquals(indexWeb.getDescription(), indexDb.getDescription());
         Assert.assertEquals(indexWeb.getLinkType(), indexDb.getLinkType());
         Assert.assertEquals(indexWeb.getLinkLabel(), indexDb.getLinkLabel());
     }

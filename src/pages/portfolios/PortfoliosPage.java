@@ -28,10 +28,10 @@ public class PortfoliosPage extends Page {
         return sendTextOnField(driver, By.id("title"));
     }
 
-    private void clickOnDataCategories(WebDriver driver) {
-        //clickOnElement(driver, By.className("multiselect text"));
-        clickOnElement(driver, By.xpath("//*[@id='page-wrapper']/div/div[3]/div/div/div[2]/form/fieldset/div[2]/div[1]/span/div/button"));
-    }
+//    private void clickOnDataCategories(WebDriver driver) {
+//        //clickOnElement(driver, By.className("multiselect text"));
+//        clickOnElement(driver, By.xpath("//*[@id='page-wrapper']/div/div[3]/div/div/div[2]/form/fieldset/div[2]/div[1]/span/div/button"));
+//    }
 
 //    private void clickOnSelected(WebDriver driver) {
 //        clickOnElement(driver, By.linkText("Voće"));
@@ -40,6 +40,7 @@ public class PortfoliosPage extends Page {
         // WebElement dataCategories = driver.findElement(By.id("data_categories"));
         WebElement dataCategories = waitForElement(driver, By.id("data_categories"));
         Select chooseDataCategories = new Select(dataCategories);
+        chooseDataCategories.deselectAll();
         chooseDataCategories.selectByIndex(2);
         return chooseDataCategories.getFirstSelectedOption().getAttribute("value");
 
@@ -88,8 +89,8 @@ public class PortfoliosPage extends Page {
     }
 
     private String choosePhoto(WebDriver driver) {
-        return sendTextOnField(driver, By.id("portfolio_photo"), "C:\\Users\\Jovanka\\Desktop\\bug2.jpg");
-        //return sendTextOnField(driver, By.id("portfolio_photo"), "/Users/qa/Desktop/1.jpg");
+        //return sendTextOnField(driver, By.id("portfolio_photo"), "C:\\Users\\Jovanka\\Desktop\\bug2.jpg");
+        return sendTextOnField(driver, By.id("portfolio_photo"), "/Users/qa/Desktop/1.jpg");
     }
 
     private void clickOnSave(WebDriver driver) {
@@ -101,10 +102,10 @@ public class PortfoliosPage extends Page {
         //clickOnElement(driver, By.className("btn-default"));
     }
 
-    private void selectAllCategories(WebDriver driver) {
-        clickOnElement(driver, By.linkText(" Selektuj sve!"));
-        //clickOnElement(driver, By.linkText("multiselect-all"));
-    }
+//    private void selectAllCategories(WebDriver driver) {
+//        clickOnElement(driver, By.linkText(" Selektuj sve!"));
+//        //clickOnElement(driver, By.linkText("multiselect-all"));
+//    }
 
     public Portfolios addNewPortfolio(WebDriver driver) {
         Portfolios p = new Portfolios();
@@ -112,10 +113,10 @@ public class PortfoliosPage extends Page {
         // chooseAllPortfolios(driver);
         clickOnAddPortfolio(driver);
         p.setTitle(sendFirstName(driver));
-        clickOnDataCategories(driver);
+        //clickOnDataCategories(driver);
 //        clickOnSelected(driver);
-        chooseDataCategories(driver);
-        //  p.setDataCategories(chooseDataCategories(driver));
+        //chooseDataCategories(driver);
+          p.setDataCategories(chooseDataCategories(driver));
         p.setCharacteristic1(sendCharacteristic1(driver));
         p.setCharacteristic2(sendCharacteristic2(driver));
         p.setDescription(sendDescription(driver));
@@ -130,9 +131,11 @@ public class PortfoliosPage extends Page {
         p.setId(getIdFromLastRow(driver, "data-portfolio-id"));
         clickOnEditPortfolio(driver);
         p.setTitle(sendFirstName(driver));
-        clickOnDataCategories(driver);
+        //chooseDataCategories(driver);
+        p.setDataCategories(chooseDataCategories(driver));
+        //clickOnDataCategories(driver);
         //selectAllCategories(driver);
-        selectAllCategories(driver);
+        //selectAllCategories(driver);
         // clickOnSelected(driver);
         p.setCharacteristic1(sendCharacteristic1(driver));
         p.setCharacteristic2(sendCharacteristic2(driver));

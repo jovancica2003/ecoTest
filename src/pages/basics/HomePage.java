@@ -11,6 +11,7 @@ import pages.index.IndexPage;
 import pages.photo.PhotoPage;
 import pages.portfolios.PortfoliosPage;
 import pages.users.UsersPage;
+import pages.contactInfo.ContactInfoPage;
 
 /**
  *
@@ -44,5 +45,12 @@ public class HomePage extends Page {
         clickOnElement(driver, By.linkText("All Users"));
         UsersPage up = new UsersPage();
         return up;
+    }
+    
+    public ContactInfoPage clickOnContactInfo(WebDriver driver){
+        clickOnElement(driver, By.className("fa-map-marker"));
+        ContactInfoPage cip = new ContactInfoPage();
+        return cip;
+        
     }
 }

@@ -76,7 +76,8 @@ public class TestPortfolios {
         Assert.assertEquals(portfolioWeb.getId(), portfolioDb.getId());
         Assert.assertEquals(portfolioWeb.getTitle(), portfolioDb.getTitle());
         Assert.assertEquals(portfolioWeb.getDataCategories(), portfolioDb.getDataCategories());
-        Assert.assertEquals(portfolioWeb.getCharacteristic1(), portfolioDb.getCharacteristic2());
+        Assert.assertEquals(portfolioWeb.getCharacteristic1(), portfolioDb.getCharacteristic1());
+        Assert.assertEquals(portfolioWeb.getCharacteristic2(), portfolioDb.getCharacteristic2());
         Assert.assertEquals(portfolioWeb.getDescription(), portfolioDb.getDescription());
     }
 

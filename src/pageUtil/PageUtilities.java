@@ -41,4 +41,12 @@ public class PageUtilities {
         return getRandomText().concat("@").concat(getRandomText());
     }
 
+    public static String getRandomHours() {
+        return (int) (Math.random() * 1000) + "-" + (int) (Math.random() * 1000);
+    }
+    
+    public static String getRandomNumber(){
+        return String.valueOf((int) (Math.random() * 10000));
+    }
+
 }
