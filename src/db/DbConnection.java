@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import setup.SeleniumProperties;
 
 /**
  *
@@ -28,8 +29,9 @@ public class DbConnection {
     public static void getConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-
-            conn = DriverManager.getConnection("jdbc:mysql://136.243.5.37:33063/eco_test", "root", "cubesqa");
+            SeleniumProperties.init();
+            //conn = DriverManager.getConnection("jdbc:mysql://136.243.5.37:33063/eco_test", "root", "cubesqa");
+            conn = DriverManager.getConnection(SeleniumProperties.dbUrl, SeleniumProperties.dbUsername, SeleniumProperties.dbPassword);
         } catch (SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -169,7 +171,7 @@ public class DbConnection {
         }
         return p;
     }
-    
+
     public static Users getUser(String query) {
         Users u = new Users();
         try {

@@ -26,14 +26,13 @@ import pages.users.UsersPage;
  * @author Jovanka
  */
 public class TestUsers {
-    
+
     private static WebDriver driver;
 
     private UsersPage usersPage;
     private static LoginPage loginPage;
     private static HomePage homePage;
-   
-    
+
     @BeforeClass
     public static void testLogin() {
         driver = new ChromeDriver();
@@ -42,36 +41,52 @@ public class TestUsers {
         homePage = loginPage.logIn(driver, "http://ecotest.school.cubes.rs/admin_session/login", "admin", "cubesqa");
         DbConnection.getConnection();
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
         driver.quit();
         DbConnection.close();
     }
-    
+
     @Before
     public void testOpenIndex() {
         System.out.println("Page title is: " + driver.getTitle());
         usersPage = homePage.clickOnAllUsers(driver);
     }
-    
+
     @After
     public void tearDown() {
         System.out.println("Page title is: " + driver.getTitle());
     }
 
-    
-   @Test
-   public void testCreateNewUser(){
-       Users userWeb = usersPage.createNewUser(driver);
-       Users userDb = DbConnection.getUser("SELECT * FROM `cms_users` ORDER by id DESC LIMIT 1");
+    @Test
+    public void testCreateNewUser() {
+        Users userWeb = usersPage.createNewUser(driver);
+        Users userDb = DbConnection.getUser("SELECT * FROM `cms_users` ORDER by id DESC LIMIT 1");
 //       Assert.assertEquals(userWeb.getId(), userDb.getId());
-       Assert.assertEquals(userWeb.getUsername(), userDb.getUsername());
-       Assert.assertEquals(userWeb.getFirstName(), userDb.getFirstName());
-       Assert.assertEquals(userWeb.getLastName(), userDb.getLastName());
-       Assert.assertEquals(userWeb.getEmail(), userDb.getEmail());
-       
-       
-       
-   }
+        Assert.assertEquals(userWeb.getUsername(), userDb.getUsername());
+        Assert.assertEquals(userWeb.getFirstName(), userDb.getFirstName());
+        Assert.assertEquals(userWeb.getLastName(), userDb.getLastName());
+        Assert.assertEquals(userWeb.getEmail(), userDb.getEmail());
+
+    }
+
+    @Test
+    public void testEditUser() {
+        Users userWeb = usersPage.editUser(driver);
+        Users userDb = DbConnection.getUser("SELECT * FROM `cms_users` WHERE id="+userWeb.getId());
+        Assert.assertEquals(userWeb.getId(), userDb.getId());
+        Assert.assertEquals(userWeb.getUsername(), userDb.getUsername());
+        Assert.assertEquals(userWeb.getFirstName(), userDb.getFirstName());
+        Assert.assertEquals(userWeb.getLastName(), userDb.getLastName());
+        Assert.assertEquals(userWeb.getEmail(), userDb.getEmail());
+
+    }
+
+    @Test
+    public void testDeleteUser() {
+        Users userWeb = usersPage.deleteUser(driver);
+        Boolean isDeleted = DbConnection.isDeleted("SELECT * FROM `cms_users` WHERE id=" + userWeb.getId());
+        Assert.assertEquals(Boolean.TRUE, isDeleted);
+    }
 }

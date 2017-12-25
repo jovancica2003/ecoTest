@@ -10,6 +10,7 @@ package domen;
  * @author Jovanka
  */
 public class Photo {
+
     private int id;
     private String title;
     private String description;
@@ -38,7 +39,8 @@ public class Photo {
     public void setDescription(String description) {
         this.description = description;
     }
-     public boolean isDeleted() {
+
+    public boolean isDeleted() {
         return deleted;
     }
 

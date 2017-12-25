@@ -31,8 +31,8 @@ public class PhotoPage extends Page {
     }
 
     private String choosePhoto(WebDriver driver) {
-        return sendTextOnField(driver, By.id("photo_gallery_leading_photo"), "/Users/qa/Desktop/1.jpg");
-        //return sendTextOnField(driver, By.id("photo_gallery_leading_photo"),"C:\\Users\\Jovanka\\Desktop\\bug2.jpg");
+        //return sendTextOnField(driver, By.id("photo_gallery_leading_photo"), "/Users/qa/Desktop/1.jpg");
+        return sendTextOnField(driver, By.id("photo_gallery_leading_photo"), "C:\\Users\\Jovanka\\Desktop\\bug2.jpg");
     }
 
     private void clickOnSave(WebDriver driver) {
@@ -49,13 +49,14 @@ public class PhotoPage extends Page {
 
     public Photo createNewPhotoGallery(WebDriver driver) {
         Photo p = new Photo();
+        // p.setId(getIdFromWeb(driver));
+        p.setId(getIdFromLastRow(driver, "data-photo-gallery-id"));
         clickOnAddPhotoGallery(driver);
         p.setTitle(sendTitle(driver));
         p.setDescription(sendDescription(driver));
         choosePhoto(driver);
         clickOnSave(driver);
-        // p.setId(getIdFromWeb(driver));
-//        p.setId(getIdFromLastRow(driver, "data-photo-gallery-id"));
+
         return p;
     }
 
@@ -77,4 +78,12 @@ public class PhotoPage extends Page {
         clickOnElement(driver, By.className("btn-danger"));
         return p;
     }
+
+//    private Photo steps(WebDriver driver, String option){
+//        Photo p = new Photo();
+//        if(option.equals("new")){
+//            
+//        }
+//        return p;
+//    }
 }

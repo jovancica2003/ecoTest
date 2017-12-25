@@ -42,8 +42,8 @@ public class TestPortfolios {
 
     @AfterClass
     public static void tearDownClass() {
-//        driver.quit();
-//         DbConnection.close();
+        driver.quit();
+        DbConnection.close();
     }
 
     @Before
@@ -73,11 +73,11 @@ public class TestPortfolios {
     public void testEditPortfolio() {
         Portfolios portfolioWeb = portfoliosPage.editPortfolio(driver);
         Portfolios portfolioDb = DbConnection.getPortfolio("SELECT * FROM `cms_portfolios` WHERE id=" + portfolioWeb.getId());
-       Assert.assertEquals(portfolioWeb.getId(), portfolioDb.getId());
+        Assert.assertEquals(portfolioWeb.getId(), portfolioDb.getId());
         Assert.assertEquals(portfolioWeb.getTitle(), portfolioDb.getTitle());
         Assert.assertEquals(portfolioWeb.getDataCategories(), portfolioDb.getDataCategories());
         Assert.assertEquals(portfolioWeb.getCharacteristic1(), portfolioDb.getCharacteristic2());
-       Assert.assertEquals(portfolioWeb.getDescription(), portfolioDb.getDescription());
+        Assert.assertEquals(portfolioWeb.getDescription(), portfolioDb.getDescription());
     }
 
     @Test
@@ -94,6 +94,6 @@ public class TestPortfolios {
         Assert.assertEquals(portfolioWeb.getId(), portfolioDb.getId());
         Assert.assertEquals(portfolioWeb.getTitle(), portfolioDb.getTitle());
         Assert.assertEquals(portfolioWeb.getDescription(), portfolioDb.getDescription());
-        
+
     }
 }

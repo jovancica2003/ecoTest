@@ -20,9 +20,6 @@ import pages.basics.Page;
  */
 public class PortfoliosPage extends Page {
 
-//    private void chooseAllPortfolios(WebDriver driver){
-//        clickOnElement(driver, By.className("active"));
-//    }
     private void clickOnAddPortfolio(WebDriver driver) {
         clickOnElement(driver, By.className("glyphicon-plus"));
     }
@@ -39,31 +36,45 @@ public class PortfoliosPage extends Page {
 //    private void clickOnSelected(WebDriver driver) {
 //        clickOnElement(driver, By.linkText("Voće"));
 //    }
-//    private String chooseDataCategories(WebDriver driver){
-//        WebElement dataCategories = driver.findElement(By.id("data_categories"));
-//       
-//        Select chooseDataCategories = new Select(dataCategories);
-//        chooseDataCategories.selectByIndex(2);
-//        return chooseDataCategories.getFirstSelectedOption().getAttribute("value");
-//        
-//    }
-    
-    
-    private void chooseDataCategories(WebDriver driver){
-        //clickOnElement(driver, By.className("multiselect text"));
-        
-        clickOnElement(driver, By.xpath("//*[@id='page-wrapper']/div/div[3]/div/div/div[2]/form/fieldset/div[2]/div[1]/span/div/button"));
-        WebElement multiSelect = waitForElementClickability(driver, By.className("multiselect-item"));
-        
-        List<WebElement> checkboxes = multiSelect.findElements(By.tagName("li"));
-        
-        checkboxes.get(3).click();
-//        for(int i=0; i<checkboxes.size(); i++){
-//            WebElement get =checkboxes.get(3);
-//            get.click();
-//        }
-    }
+    private String chooseDataCategories(WebDriver driver) {
+        // WebElement dataCategories = driver.findElement(By.id("data_categories"));
+        WebElement dataCategories = waitForElement(driver, By.id("data_categories"));
+        Select chooseDataCategories = new Select(dataCategories);
+        chooseDataCategories.selectByIndex(2);
+        return chooseDataCategories.getFirstSelectedOption().getAttribute("value");
 
+    }
+//    private String chooseDataCategories(WebDriver driver) {
+//        WebElement combo = waitForElement(driver, By.id("data_categories"));
+//        Select data = new Select(combo);
+//        //List<WebElement> items = data.getOptions();
+//        data.deselectAll();
+//        data.selectByIndex(2);
+//        //data.selectByIndex((int) (Math.random() * items.size()));
+//        WebElement selecetedItem = data.getFirstSelectedOption();
+//        return selecetedItem.getAttribute("value");
+//    }
+//    private void selectDataCategories(WebDriver driver) {
+//        WebElement combobox = waitForElement(driver, By.id("data_categories"));
+//        Select data = new Select(combobox);
+//        data.selectByValue("20");
+//        data.selectByValue("17");
+//    }
+
+//    private void chooseDataCategories(WebDriver driver){
+//        //clickOnElement(driver, By.className("multiselect text"));
+//        
+//        clickOnElement(driver, By.xpath("//*[@id='page-wrapper']/div/div[3]/div/div/div[2]/form/fieldset/div[2]/div[1]/span/div/button"));
+//        WebElement multiSelect = waitForElementClickability(driver, By.className("multiselect-item"));
+//        
+//        List<WebElement> checkboxes = multiSelect.findElements(By.tagName("li"));
+//        
+//        checkboxes.get(3).click();
+////        for(int i=0; i<checkboxes.size(); i++){
+////            WebElement get =checkboxes.get(3);
+////            get.click();
+////        }
+//    }
     private String sendCharacteristic1(WebDriver driver) {
         return sendTextOnField(driver, By.id("characteristic1"));
     }
@@ -101,7 +112,7 @@ public class PortfoliosPage extends Page {
         // chooseAllPortfolios(driver);
         clickOnAddPortfolio(driver);
         p.setTitle(sendFirstName(driver));
-//        clickOnDataCategories(driver);
+        clickOnDataCategories(driver);
 //        clickOnSelected(driver);
         chooseDataCategories(driver);
         //  p.setDataCategories(chooseDataCategories(driver));
@@ -122,7 +133,7 @@ public class PortfoliosPage extends Page {
         clickOnDataCategories(driver);
         //selectAllCategories(driver);
         selectAllCategories(driver);
-       // clickOnSelected(driver);
+        // clickOnSelected(driver);
         p.setCharacteristic1(sendCharacteristic1(driver));
         p.setCharacteristic2(sendCharacteristic2(driver));
         p.setDescription(sendDescription(driver));

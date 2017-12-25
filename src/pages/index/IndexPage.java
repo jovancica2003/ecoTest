@@ -19,10 +19,6 @@ import pages.basics.Page;
  */
 public class IndexPage extends Page {
 
-//    private void clickOnIndexSlider(WebDriver driver){
-//        clickOnElement(driver, By.className("fa-sliders"));
-//        
-//    }
     private void clickOnAddIndex(WebDriver driver) {
         clickOnElement(driver, By.className("glyphicon-plus"));
     }
@@ -32,13 +28,9 @@ public class IndexPage extends Page {
     }
 
     private String sendDescription(WebDriver driver) {
-        // return sendTextOnField(driver, By.id("description"));
         return sendTextOnField(driver, By.id("description"), PageUtilities.getRandomText());
     }
 
-//    private String chooseUrl (WebDriver driver){
-//        return PageUtilities.getRandomUrl();
-//    }
     private String sendTextOnLinkLabel(WebDriver driver) {
         return sendTextOnField(driver, By.id("link_label"));
     }
@@ -51,9 +43,6 @@ public class IndexPage extends Page {
         return sendUrl(driver, By.id("external_link_url"));
     }
 
-//    private void clickOnChooseFile (WebDriver driver){
-//        clickOnElement(driver, By.id("index_slide_photo"));
-//    }
     private String chooseLinkType(WebDriver driver, int i) {
         WebElement linkType = driver.findElement(By.id("link_type"));
         Select chooseLinkType = new Select(linkType);
@@ -62,8 +51,8 @@ public class IndexPage extends Page {
     }
 
     private String choosePhoto(WebDriver driver) {
-       return sendTextOnField(driver, By.id("index_slide_photo"), "/Users/qa/Desktop/1.jpg");
-        //return sendTextOnField(driver, By.id("index_slide_photo"),"C:\\Users\\Jovanka\\Desktop\\bug2.jpg");
+       // return sendTextOnField(driver, By.id("index_slide_photo"), "/Users/qa/Desktop/1.jpg");
+        return sendTextOnField(driver, By.id("index_slide_photo"),"C:\\Users\\Jovanka\\Desktop\\bug2.jpg");
     }
 
     private void clickOnSave(WebDriver driver) {
@@ -90,15 +79,15 @@ public class IndexPage extends Page {
 //        sendInternalUrl(driver);
 //        choosePhoto(driver);
 //        clickOnSave(driver);
-  //     i.setId(getIdFromLastRow(driver, "data-index-slide-id"));
+        //     i.setId(getIdFromLastRow(driver, "data-index-slide-id"));
 //
 //        return i;
-return steps(driver, "new");
+        return steps(driver, "new");
     }
 
     public Index editIndex(WebDriver driver) {
 //        Index i = new Index();
-   //   i.setId(getIdFromWeb(driver));
+        //   i.setId(getIdFromWeb(driver));
 //        chooseEditOption(driver);
 //        i.setTitle(sendTitle(driver));
 //        i.setDescription(sendDescription(driver));
@@ -112,7 +101,7 @@ return steps(driver, "new");
 //        clickOnSave(driver);
 //
 //        return i;
-return steps(driver, "edit");
+        return steps(driver, "edit");
     }
 
     public Index deleteIndex(WebDriver driver) {
@@ -131,7 +120,7 @@ return steps(driver, "edit");
         } else {
             chooseEditOption(driver);
         }
-       //i.setId(getIdFromLastRow(driver, "data-index-slide-id"));
+        //i.setId(getIdFromLastRow(driver, "data-index-slide-id"));
         //i.setId(getIdFromWeb(driver));
         i.setTitle(sendTitle(driver));
         i.setDescription(sendDescription(driver));
@@ -156,7 +145,7 @@ return steps(driver, "edit");
 
         choosePhoto(driver);
         clickOnSave(driver);
-        
+
         if (option.equals("new")) {
             i.setId(getIdFromLastRow(driver, "data-index-slide-id"));
         } else {

@@ -10,6 +10,7 @@ package domen;
  * @author Jovanka
  */
 public class Portfolios {
+
     private int id;
     private String title;
     private String dataCategories;
@@ -65,6 +66,7 @@ public class Portfolios {
     public void setDescription(String description) {
         this.description = description;
     }
+
     public boolean isDeleted() {
         return deleted;
     }
@@ -72,5 +74,5 @@ public class Portfolios {
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
-    
+
 }

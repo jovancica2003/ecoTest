@@ -10,13 +10,13 @@ package domen;
  * @author qa
  */
 public class Index {
+
     private int id;
     private String title;
     private String description;
     private String linkType;
     private String linkLabel;
     private boolean deleted;
-  
 
     public int getId() {
         return id;
@@ -57,7 +57,8 @@ public class Index {
     public void setLinkLabel(String linkLabel) {
         this.linkLabel = linkLabel;
     }
-     public boolean isDeleted() {
+
+    public boolean isDeleted() {
         return deleted;
     }
 
