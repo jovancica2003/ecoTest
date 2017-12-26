@@ -86,5 +86,12 @@ public class Page {
         optionButton.click();
 
     }
+    
+    public int sendNumberOnField (WebDriver driver,By locator ){
+        WebElement field = waitForElement(driver, locator);
+        field.clear();
+        int number = PageUtilities.getRandomInteger();
+        return number;
+    }
 
 }

@@ -5,6 +5,7 @@
  */
 package pages.contactInfo;
 
+import domen.ContactInfo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pageUtil.PageUtilities;
@@ -27,8 +28,8 @@ public class ContactInfoPage extends Page{
          return sendTextOnField(driver, By.id("address"));
     }
     
-    private String SendAddressNumber (WebDriver driver){
-         return sendTextOnField(driver, By.id("address_number"));
+    private int SendAddressNumber (WebDriver driver){
+         return sendNumberOnField(driver, By.id("address_number"));
     }
     
     private String SendHours (WebDriver driver){
@@ -37,5 +38,41 @@ public class ContactInfoPage extends Page{
     
     private String SendLattitude (WebDriver driver){
         return sendTextOnField(driver, By.id("latitude"), PageUtilities.getRandomNumber());
+    }
+    
+    private String SendLongitude (WebDriver driver){
+        return sendTextOnField(driver, By.id("longitude"), PageUtilities.getRandomNumber());
+    }
+    
+    private String SendPhone(WebDriver driver){
+        return sendTextOnField(driver, By.id("phone"), PageUtilities.getRandomNumber());
+    }
+    
+    private String SendEmail (WebDriver driver){
+        return sendTextOnField(driver, By.id("email"), PageUtilities.getRandomEmail());
+    }
+    
+    private int sendZoom (WebDriver driver){
+        return sendNumberOnField(driver, By.id("zoom"));
+    }
+    
+    public void clickOnSave(WebDriver driver){
+        clickOnElement(driver, By.id("new_portfolio_submit"));
+    }
+    
+    public ContactInfo addContactInfo (WebDriver driver){
+        ContactInfo ci = new ContactInfo();
+        clickOnAddNewContact(driver);
+        ci.setLocation(SendLocation(driver));
+        ci.setAdress(SendAddress(driver));
+        ci.setAdressNumber(SendAddressNumber(driver));
+        ci.setHours(SendHours(driver));
+        ci.setLatitude(SendLattitude(driver));
+        ci.setLongitude(SendLongitude(driver));
+        ci.setPhone(SendPhone(driver));
+        ci.setEmail(SendEmail(driver));
+        ci.setZoom(sendZoom(driver));
+        
+        return ci;
     }
 }
