@@ -5,6 +5,7 @@
  */
 package db;
 
+import domen.ContactInfo;
 import domen.Index;
 import domen.Photo;
 import domen.Portfolios;
@@ -23,9 +24,9 @@ import setup.SeleniumProperties;
  * @author qa
  */
 public class DbConnection {
-
+    
     private static Connection conn;
-
+    
     public static void getConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -42,7 +43,7 @@ public class DbConnection {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public static void close() {
         try {
             conn.close();
@@ -50,16 +51,16 @@ public class DbConnection {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public static Index getIndex(String query) {
         Index i = new Index();
         try {
-
+            
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
-
+            
             System.out.println(query);
-
+            
             if (rs.next()) {
                 i.setId(rs.getInt(1));
                 i.setTitle(rs.getString(2));
@@ -69,23 +70,23 @@ public class DbConnection {
                 i.setDeleted(false);
             } else {
                 i.setDeleted(true);
-
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return i;
     }
-
+    
     public static Photo getPhoto(String query) {
         Photo p = new Photo();
         try {
-
+            
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
-
+            
             System.out.println(query);
-
+            
             if (rs.next()) {
                 p.setId(rs.getInt(1));
                 p.setTitle(rs.getString(2));
@@ -93,23 +94,23 @@ public class DbConnection {
                 p.setDeleted(false);
             } else {
                 p.setDeleted(true);
-
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
     }
-
+    
     public static Boolean isDeleted(String query) {
-
+        
         try {
-
+            
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
-
+            
             System.out.println(query);
-
+            
             if (rs.next()) {
                 return false;
             } else {
@@ -120,16 +121,16 @@ public class DbConnection {
         }
         return null;
     }
-
+    
     public static Portfolios getPortfolio(String query) {
         Portfolios p = new Portfolios();
         try {
-
+            
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
-
+            
             System.out.println(query);
-
+            
             if (rs.next()) {
                 p.setId(rs.getInt(1));
                 p.setTitle(rs.getString(2));
@@ -140,23 +141,23 @@ public class DbConnection {
                 p.setDeleted(false);
             } else {
                 p.setDeleted(true);
-
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
     }
-
+    
     public static Portfolios getPortfoliosCategories(String query) {
         Portfolios p = new Portfolios();
         try {
-
+            
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
-
+            
             System.out.println(query);
-
+            
             if (rs.next()) {
                 p.setId(rs.getInt(1));
                 p.setTitle(rs.getString(2));
@@ -164,23 +165,23 @@ public class DbConnection {
                 p.setDeleted(false);
             } else {
                 p.setDeleted(true);
-
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
     }
-
+    
     public static Users getUser(String query) {
         Users u = new Users();
         try {
-
+            
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
-
+            
             System.out.println(query);
-
+            
             if (rs.next()) {
                 u.setId(rs.getInt(1));
                 u.setUsername(rs.getString(2));
@@ -190,11 +191,42 @@ public class DbConnection {
                 u.setDeleted(false);
             } else {
                 u.setDeleted(true);
-
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return u;
+    }
+    
+    public static ContactInfo getContactInfo(String query) {
+        ContactInfo ci = new ContactInfo();
+        try {
+            
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            
+            System.out.println(query);
+            
+            if (rs.next()) {
+                ci.setId(rs.getInt(1));
+                ci.setLocation(rs.getString(2));
+                ci.setAdress(rs.getString(3));
+                ci.setAdressNumber(rs.getInt(4));
+                ci.setLatitude(rs.getString(6));
+                ci.setLongitude(rs.getString(7));
+                ci.setZoom(rs.getInt(8));
+                ci.setPhone(rs.getString(9));
+                ci.setEmail(rs.getString(11));
+                ci.setHours(rs.getString(12));
+                ci.setDeleted(false);
+            } else {
+                ci.setDeleted(true);
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ci;
     }
 }

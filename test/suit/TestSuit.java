@@ -5,6 +5,7 @@
  */
 package suit;
 
+import contactInfo.TestContactInfo;
 import index.TestIndex;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -15,13 +16,15 @@ import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import photo.TestPhoto;
+import portfolios.TestPortfolios;
+import users.TestUsers;
 
 /**
  *
  * @author qa
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({TestIndex.class, TestPhoto.class})
+@Suite.SuiteClasses({TestIndex.class, TestPhoto.class, TestPortfolios.class, TestUsers.class, TestContactInfo.class})
 public class TestSuit {
 
     public TestSuit() {

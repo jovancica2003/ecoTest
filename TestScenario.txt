@@ -1,0 +1,121 @@
+##########################################################################################################################
+NAPOMENA: U nastavku je dat test scenarijo za koji treba napistai test skriptu. 
+Ko pre zavrsetka kursa zavrsi sve stavke, pise u nastavku ovog teksta svoj test scenarijo za koji ce prosiriti skriptu.
+#########################################################################################################################
+
+#######RISTUPNI PODACI ZA RAD SA BAZOM##########
+PhpMyAdmin se nalazi na: http://ecotest.school.cubes.rs/phpmyadmin
+
+Parametri za kacenje na bazu:
+MySQL Host: 136.243.5.37
+MySQL Port: 33063
+MySQL User: root
+MySQL Pass: cubesqa
+
+
+###########LOG IN##########################
+1. Korisnik odlazi na web adresu:
+
+http://ecotest.school.cubes.rs/admin_session/login
+
+username: admin
+password: cubesqa
+
+#####KREIRANJE NOVOG INDEX SLIDERA########
+2. Korisnik bira 'Index Slider' i bira opciju 'Add index Slide'
+2.1. Korisnik unosi proizvoljne vrednosti na tile i description polja.
+2.2. Korisnik bira iz combo boxa 'Link type' opciju 'Link to internal url'
+2.3. Korisnik unosi proizvoljan text na 'Link Label' polje
+2.4. Korisnik unosi proizvoljan url na polje 'Internal Link Url'( url mora biti u validnom formatu  npr: http://prozivoljantext.com)
+2.5. Korisnik kaci proizvoljnu sliku sa svog file sistema i bira opciju 'Save'
+2.6. Test proverava da li je entitet sacuvan u bazi
+
+#####EDITOVANJE INDEX SLIDERA########
+3. Korisnik bira poslednji index slider iz tabele i bira opciju 'Edit'
+3.1. Korisnik unosi proizvoljne vrednosti na tile i description polja.
+3.2. Korisnik bira iz combo boxa 'Link type' opciju 'Link to external site'
+3.3. Korisnik unosi proizvoljan text na 'Link Label' polje
+3.4. Korisnik unosi proizvoljan url na polje 'Internal Link Url'( url mora biti u validnom formatu  npr: http://prozivoljantext.com)
+3.5. Korisnik kaci proizvoljnu sliku sa svog file sistema i bira opciju 'Save'
+3.6. Test proverava da li su promene sacuvane u bazi
+
+####BRISANJE INDEX SLIDERA########
+4. Korisnik bira poslednji index slider iz tabele i bira opciju 'Delete'
+4.1. Test proverava da li je entitet izbrisan iz baze
+
+####KREIRANJE NOVE FOTO GALERIJE#####
+5. Korisnik bira 'Photo Galleries' i bira opciju 'Add photo gallery'
+5.1. Korisnik unosi proizvoljne vrednosti na tile i description polja
+5.2. Korisnik kaci proizvoljnu sliku sa svog file sistema i bira opciju 'Save'
+5.3. Test proverava da li je entitet sacuvan u bazi
+
+####EDITOVANJE FOTO GALERIJE#####
+6. Korisnik bira poslednju galeriju iz tabele i bira opciju 'Edit'
+6.1. Korisnik unosi proizvoljne vrednosti na tile i description polja.
+6.2. Korisnik kaci proizvoljnu sliku sa svog file sistema i bira opciju 'Save'
+6.3. Test proverava da li su promene sacuvane u bazi
+
+####BRISANJE FOTO GALERIJE#####
+7. Korisnik bira poslednju galeriju iz tabele i bira opciju 'Delete'
+7.1. Test proverava da li je entitet izbrisan iz baze
+
+####KREIRANJE NOVOG PORTFOLIA####
+8. Korisnik bira 'All Portfolios'
+8.1. Korisnik bira opciju 'Add Portfolio'
+8.2. Korisnik unosi proizvoljan tekst na first name polje
+8.3. Korisnik bira opciju 'Voce' iz data categories
+8.2. Korisnik unosi proizvoljan tekst u 'Characteristic1', 'Characteristic2' i 'Resume' polje
+8.3. Korisnik kaci proizvoljnu sliku sa svog file sistema i bira opciju 'Save'
+8.4. Test proverava da li je entitet sacuvan u bazi
+
+####EDITOVANJE PORTFOLIA####
+9. Korisnik bira poslednji portfolio iz tabele i bira opciju 'Edit'
+9.1. Korisnik unosi proizvoljan tekst na first name polje
+9.2. Korisnik bira opciju 'Voce' iz data categories
+9.3. Korisnik unosi proizvoljan tekst u 'Characteristic1', 'Characteristic2' i 'Description' polje
+9.4. Korisnik kaci proizvoljnu sliku sa svog file sistema i bira opciju 'Save'
+9.5. Test proverava da li su promene sacuvane u bazi
+
+####BRISANJE PORTFOLIA####
+10. Korisnik bira poslednji portfolio iz tabele i bira opciju 'Delete'
+10.1. Test proverava da li je entitet izbrisan iz baze
+
+####KREIRANJE NOVE KATEGORIJE PORTFOLIA####
+11. Korisnik bira 'Categories' i bira opciju 'Add Porfolio'
+11.1. Korisnik unosi proizvoljan tekst na 'Name' polje
+11.2. Korisnik unosi proizvoljan tekst na 'Resume' polje i bira opciju 'Save'
+11.3. Test proverava da li je entitet sacuvan u bazi
+
+####KREIRANJE NOVOG USERA####
+12. Korisnik bira ' All Users' 
+12.1. Korisnik bira opciju 'Add User'
+12.2. Korisnik unosi proizvoljan tekst na polje 'Username'
+12.3. Korisnik unosi proizvoljan tekst na polje 'First Name'
+12.4. Korisnik unosi proizvoljan tekst na polje 'Last Name'
+12.5. Korisnik unosi proizvoljan mejl na polje 'Email' i bira opciju 'Save'
+12.6. Test proverava da li je entitet sacuvan u bazi
+
+####EDITOVANJE USERA####
+13. Korisnik bira poslednjeg usera iz tabele i bira opciju 'Edit'
+13.1. Korisnik unosi proizvoljan tekst na polje 'Username'
+13.2. Korisnik unosi proizvoljan tekst na polje 'First Name'
+13.3. Korisnik unosi proizvoljan tekst na polje 'Last Name'
+13.4. Korisnik unosi proizvoljan mejl na polje 'Email' i bira opciju 'Save'
+13.5. Test proverava da li su promene sacuvane u bazi
+
+####BRISANJE USERA####
+14. Korisnik bira poslednji user iz tabele i bira opciju 'Delete'
+14.1. Test proverava da li je entitet izbrisan iz baze
+
+####KREIRANJE NOVOG KONTAKTA####
+15. Korisnik bira 'Conact info' i bira opciju 'Add new contact info'
+15.1. Korisnik unosi proizvoljan tekst na polje 'Location'
+15.2. Korisnik unosi proizvoljan tekst na polje 'Address'
+15.3. Korisnik unosi proizvoljan broj na polje 'Address_number'
+15.4. Korisnik unosi proizvoljan broj na polje 'Hours' 
+15.5. Korisnik unosi proizvoljan broj na polje 'Lattitude'
+15.6. Korisnik unosi proizvoljan broj na polje 'Longitude'
+15.7. Korisnik unosi proizvoljan broj na polje 'Phone'
+15.8. Korisnik unosi proizvoljan mejl na polje 'Email'
+15.9. Korisnik unosi proizvoljan broj na polje 'Zoom' i bira opciju 'Save'
+15.10. Test proverava da li je entitet sacuvan u bazi

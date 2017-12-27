@@ -59,7 +59,7 @@ public class UsersPage extends Page {
 
     }
 
-    public Users editUser(WebDriver driver) {
+    public Users editUser(WebDriver driver) throws InterruptedException {
         Users u = new Users();
         clickOnEditUser(driver);
         u.setUsername(sendUsername(driver));
@@ -67,7 +67,9 @@ public class UsersPage extends Page {
         u.setLastName(sendLastName(driver));
         u.setEmail(sendEmail(driver));
         clickOnSave(driver);
-        u.setId(getIdFromLastRow(driver, "data-user-id"));
+        Thread.sleep(5000);
+
+        u.setId(getIdFromLastRowUser(driver, "data-user-id"));
 
         return u;
     }

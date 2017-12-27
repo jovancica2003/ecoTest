@@ -73,8 +73,25 @@ public class Page {
         return lastRow;
     }
 
+    private WebElement findLastRowForUsers(WebDriver driver) {
+        WebElement parent = driver.findElement(By.id("rows-table"));
+        WebElement table = parent.findElement(By.xpath(("//*[@id='rows-table']/tbody")));
+        List<WebElement> rows = table.findElements(By.tagName("tr"));
+        WebElement lastRow = rows.get(rows.size() - 1);
+
+        return lastRow;
+
+    }
+
     public int getIdFromLastRow(WebDriver driver, String attributeName) {
         WebElement lastRow = findLastRow(driver);
+        String id = lastRow.getAttribute(attributeName);
+        return Integer.valueOf(id);
+
+    }
+
+    public int getIdFromLastRowUser(WebDriver driver, String attributeName) {
+        WebElement lastRow = findLastRowForUsers(driver);
         String id = lastRow.getAttribute(attributeName);
         return Integer.valueOf(id);
 
@@ -86,11 +103,12 @@ public class Page {
         optionButton.click();
 
     }
-    
-    public int sendNumberOnField (WebDriver driver,By locator ){
+
+    public int sendNumberOnField(WebDriver driver, By locator) {
         WebElement field = waitForElement(driver, locator);
         field.clear();
         int number = PageUtilities.getRandomInteger();
+        field.sendKeys(String.valueOf(number));
         return number;
     }
 

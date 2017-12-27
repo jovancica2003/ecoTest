@@ -72,9 +72,9 @@ public class TestUsers {
     }
 
     @Test
-    public void testEditUser() {
+    public void testEditUser() throws InterruptedException {
         Users userWeb = usersPage.editUser(driver);
-        Users userDb = DbConnection.getUser("SELECT * FROM `cms_users` WHERE id="+userWeb.getId());
+        Users userDb = DbConnection.getUser("SELECT * FROM `cms_users` WHERE id=" + userWeb.getId());
         Assert.assertEquals(userWeb.getId(), userDb.getId());
         Assert.assertEquals(userWeb.getUsername(), userDb.getUsername());
         Assert.assertEquals(userWeb.getFirstName(), userDb.getFirstName());
